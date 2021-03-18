@@ -15,7 +15,18 @@ namespace KataBaseXunit.App.Tests
         public void EmptyBasketPriceIsZero()
         {
             var result = _sut.GetTotalPrice();
+            
             Assert.Equal(0, result);
+        }
+
+        [Fact]
+        public void SingleACosts50()
+        {
+            _sut.Scan("A");
+            
+            var result = _sut.GetTotalPrice();
+            
+            Assert.Equal(50, result);
         }
     }
 }
