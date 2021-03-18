@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace KataBaseXunit.App
 {
@@ -21,22 +20,7 @@ namespace KataBaseXunit.App
 
         public int GetTotalPrice()
         {
-            return GetBasicPricing() + 
-                   GetDiscount(_discounts, _items);
-        }
-
-        private static int GetDiscount(IEnumerable<Discount> discounts, IReadOnlyCollection<string> items)
-        {
-            var totalDiscount = 0;
-            
-            foreach (var discount in discounts)
-            {
-                var countOfAs = items
-                    .Count(sku => sku == discount.Sku);
-                totalDiscount += -countOfAs / discount.TotalItemsToQualify * discount.DiscountAmount;
-            }
-            
-            return totalDiscount;
+            return GetBasicPricing() + MultibuyDiscounter.GetDiscount(_discounts, _items);
         }
 
         private int GetBasicPricing()
