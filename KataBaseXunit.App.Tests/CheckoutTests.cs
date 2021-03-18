@@ -21,7 +21,7 @@ namespace KataBaseXunit.App.Tests
                 new Discount("A", 3, 20),
                 new Discount("B", 2, 15)
             };
-            _sut = new Checkout(priceList, new MultiBuyDiscounter(discounts));
+            _sut = new Checkout(new MultiBuyDiscounter(discounts), new BasicPricer(priceList));
         }
 
         [Theory]

@@ -5,36 +5,20 @@ namespace KataBaseXunit.App
     public class Checkout
     {
         private readonly List<string> _items;
-        private readonly Dictionary<string, int> _priceList;
         private readonly IDiscounter _discounter;
+        private readonly BasicPricer _basicPricer;
 
-        public Checkout(
-            Dictionary<string, int> priceList, 
-            IDiscounter discounter)
+        public Checkout(IDiscounter discounter, BasicPricer basicPricer)
         {
             _items = new List<string>();
-            _priceList = priceList;
             _discounter = discounter;
+            _basicPricer = basicPricer;
         }
 
         public int GetTotalPrice()
         {
-            return GetBasicPricing() + _discounter.GetDiscount(_items);
-        }
-
-        private int GetBasicPricing()
-        {
-            var totalPrice = 0;
-
-            foreach (var item in _items)
-            {
-                if (_priceList.ContainsKey(item))
-                {
-                    totalPrice += _priceList[item];
-                }
-            }
-
-            return totalPrice;
+            return _basicPricer.GetBasicPricing(_items) + 
+                   _discounter.GetDiscount(_items);
         }
 
         public void Scan(string sku)
