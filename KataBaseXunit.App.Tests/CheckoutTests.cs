@@ -17,53 +17,22 @@ namespace KataBaseXunit.App.Tests
             });
         }
 
-        [Fact]
-        public void EmptyBasketPriceIsZero()
+        [Theory]
+        [InlineData("", 0)]
+        [InlineData("A", 50)]
+        [InlineData("AA", 100)]
+        [InlineData("B", 30)]
+        [InlineData("C", 20)]
+        public void ItemsCostCorrespondsToPriceList(string skus, int expectedTotal)
         {
-            var result = _sut.GetTotalPrice();
-            
-            Assert.Equal(0, result);
-        }
-
-        [Fact]
-        public void SingleACosts50()
-        {
-            _sut.Scan("A");
-            
-            var result = _sut.GetTotalPrice();
-            
-            Assert.Equal(50, result);
-        }
-
-        [Fact]
-        public void TwoAsCost100()
-        {
-            _sut.Scan("A");
-            _sut.Scan("A");
+            foreach (var sku in skus.ToCharArray())
+            {
+                _sut.Scan(sku.ToString());
+            }
             
             var result = _sut.GetTotalPrice();
             
-            Assert.Equal(100, result);
-        }
-
-        [Fact]
-        public void SingleBCosts30()
-        {
-            _sut.Scan("B");
-            
-            var result = _sut.GetTotalPrice();
-            
-            Assert.Equal(30, result);
-        }
-
-        [Fact]
-        public void SingleCCosts20()
-        {
-            _sut.Scan("C");
-            
-            var result = _sut.GetTotalPrice();
-            
-            Assert.Equal(20, result);
+            Assert.Equal(expectedTotal, result);
         }
     }
 }
