@@ -16,7 +16,11 @@ namespace KataBaseXunit.App.Tests
                 {"C", 20},
                 {"D", 15}
             };
-            _sut = new Checkout(priceList);
+            _sut = new Checkout(priceList, new[]
+            {
+                new Discount("A", 3, 20),
+                new Discount("B", 2, 15)
+            });
         }
 
         [Theory]

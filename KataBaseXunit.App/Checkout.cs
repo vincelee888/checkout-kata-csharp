@@ -7,17 +7,15 @@ namespace KataBaseXunit.App
     {
         private readonly List<string> _items;
         private readonly Dictionary<string, int> _priceList;
-        private Discount[] _discounts;
+        private readonly Discount[] _discounts;
 
-        public Checkout(Dictionary<string, int> priceList)
+        public Checkout(
+            Dictionary<string, int> priceList, 
+            Discount[] discounts)
         {
             _items = new List<string>();
             _priceList = priceList;
-            _discounts = new[]
-            {
-                new Discount("A", 3, 20),
-                new Discount("B", 2, 15)
-            };
+            _discounts = discounts;
 
         }
 
@@ -62,7 +60,7 @@ namespace KataBaseXunit.App
         }
     }
 
-    internal readonly struct Discount
+    public readonly struct Discount
     {
         public string Sku { get; }
         public int TotalItemsToQualify { get; }
