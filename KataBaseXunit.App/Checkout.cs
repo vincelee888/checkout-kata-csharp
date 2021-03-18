@@ -22,6 +22,7 @@ namespace KataBaseXunit.App
 
         private int GetDiscount()
         {
+            var aDiscountDefinition = new Discount("A", 3, 20);
             var countOfAs = _items
                 .Count(sku => sku == "A");
             var discountA = -countOfAs / 3 * 20;
@@ -51,6 +52,20 @@ namespace KataBaseXunit.App
         public void Scan(string sku)
         {
             _items.Add(sku);
+        }
+    }
+
+    internal readonly struct Discount
+    {
+        public string Sku { get; }
+        public int TotalItemsToQualify { get; }
+        public int DiscountAmount { get; }
+
+        public Discount(string sku, int totalItemsToQualify, int discountAmount)
+        {
+            Sku = sku;
+            TotalItemsToQualify = totalItemsToQualify;
+            DiscountAmount = discountAmount;
         }
     }
 }
