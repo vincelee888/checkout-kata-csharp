@@ -16,8 +16,15 @@ namespace KataBaseXunit.App
 
         public int GetTotalPrice()
         {
-            var discount = _items.Count(sku => sku == "A") / 3 * 20;
-            return GetBasicPricing() - discount;
+            return GetBasicPricing() + 
+                   GetDiscount();
+        }
+
+        private int GetDiscount()
+        {
+            var countOfAs = _items
+                .Count(sku => sku == "A");
+            return -countOfAs / 3 * 20;
         }
 
         private int GetBasicPricing()
