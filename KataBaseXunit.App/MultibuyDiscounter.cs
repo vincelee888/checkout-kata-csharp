@@ -1,20 +1,22 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using KataBaseXunit.App;
 
-public class MultibuyDiscounter
+namespace KataBaseXunit.App
 {
-    public int GetDiscount(IEnumerable<Discount> discounts, IReadOnlyCollection<string> items)
+    public class MultibuyDiscounter
     {
-        var totalDiscount = 0;
-            
-        foreach (var discount in discounts)
+        public int GetDiscount(IEnumerable<Discount> discounts, IReadOnlyCollection<string> items)
         {
-            var countOfAs = items
-                .Count(sku => sku == discount.Sku);
-            totalDiscount += -countOfAs / discount.TotalItemsToQualify * discount.DiscountAmount;
-        }
+            var totalDiscount = 0;
             
-        return totalDiscount;
+            foreach (var discount in discounts)
+            {
+                var countOfAs = items
+                    .Count(sku => sku == discount.Sku);
+                totalDiscount += -countOfAs / discount.TotalItemsToQualify * discount.DiscountAmount;
+            }
+            
+            return totalDiscount;
+        }
     }
 }
