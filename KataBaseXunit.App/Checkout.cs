@@ -7,6 +7,7 @@ namespace KataBaseXunit.App
     {
         private readonly List<string> _items;
         private readonly Dictionary<string, int> _priceList;
+        private Discount[] _discounts;
 
         public Checkout(Dictionary<string, int> priceList)
         {
@@ -22,7 +23,7 @@ namespace KataBaseXunit.App
 
         private int GetDiscount()
         {
-            var discounts = new[]
+            _discounts = new[]
             {
                 new Discount("A", 3, 20),
                 new Discount("B", 2, 15)
@@ -30,7 +31,7 @@ namespace KataBaseXunit.App
 
             var totalDiscount = 0;
             
-            foreach (var discount in discounts)
+            foreach (var discount in _discounts)
             {
                 var countOfAs = _items
                     .Count(sku => sku == discount.Sku);
