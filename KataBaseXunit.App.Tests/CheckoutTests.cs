@@ -27,6 +27,7 @@ namespace KataBaseXunit.App.Tests
         [InlineData("C", 20)]
         [InlineData("D", 15)]
         [InlineData("AAA", 130)]
+        [InlineData("BB", 45)]
         public void ItemsCostCorrespondsToPriceList(string skus, int expectedTotal)
         {
             foreach (var sku in skus.ToCharArray())
