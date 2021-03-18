@@ -13,6 +13,12 @@ namespace KataBaseXunit.App
         {
             _items = new List<string>();
             _priceList = priceList;
+            _discounts = new[]
+            {
+                new Discount("A", 3, 20),
+                new Discount("B", 2, 15)
+            };
+
         }
 
         public int GetTotalPrice()
@@ -23,12 +29,6 @@ namespace KataBaseXunit.App
 
         private int GetDiscount()
         {
-            _discounts = new[]
-            {
-                new Discount("A", 3, 20),
-                new Discount("B", 2, 15)
-            };
-
             var totalDiscount = 0;
             
             foreach (var discount in _discounts)
