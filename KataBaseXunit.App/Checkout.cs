@@ -24,9 +24,10 @@ namespace KataBaseXunit.App
             
             foreach (var item in _items)
             {
-                if (item == "A") totalPrice += 50;
-                if (item == "B") totalPrice += 30;
-                if (item == "C") totalPrice += 20;
+                if (priceList.ContainsKey(item))
+                {
+                    totalPrice += priceList[item];
+                }
             }
             
             return totalPrice;
