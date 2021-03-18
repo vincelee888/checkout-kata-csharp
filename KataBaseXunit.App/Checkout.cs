@@ -26,18 +26,4 @@ namespace KataBaseXunit.App
             _items.Add(sku);
         }
     }
-
-    public readonly struct Discount
-    {
-        public string Sku { get; }
-        public int TotalItemsToQualify { get; }
-        public int DiscountAmount { get; }
-
-        public Discount(string sku, int totalItemsToQualify, int discountAmount)
-        {
-            Sku = sku;
-            TotalItemsToQualify = totalItemsToQualify;
-            DiscountAmount = discountAmount;
-        }
-    }
 }
