@@ -6,23 +6,20 @@ namespace KataBaseXunit.App
     {
         private readonly List<string> _items;
         private readonly Dictionary<string, int> _priceList;
-        private readonly Discount[] _discounts;
-        private readonly MultibuyDiscounter _discounter;
+        private readonly MultiBuyDiscounter _discounter;
 
         public Checkout(
             Dictionary<string, int> priceList, 
-            Discount[] discounts, MultibuyDiscounter discounter)
+            MultiBuyDiscounter discounter)
         {
             _items = new List<string>();
             _priceList = priceList;
-            _discounts = discounts;
-
             _discounter = discounter;
         }
 
         public int GetTotalPrice()
         {
-            return GetBasicPricing() + _discounter.GetDiscount(_discounts, _items);
+            return GetBasicPricing() + _discounter.GetDiscount(_items);
         }
 
         private int GetBasicPricing()
