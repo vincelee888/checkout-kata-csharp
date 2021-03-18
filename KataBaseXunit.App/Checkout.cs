@@ -4,7 +4,7 @@ namespace KataBaseXunit.App
 {
     public class Checkout
     {
-        private List<string> _items;
+        private readonly List<string> _items;
 
         public Checkout()
         {
@@ -17,15 +17,15 @@ namespace KataBaseXunit.App
             
             foreach (var item in _items)
             {
-                if (item == "A") totalPrice = 50;
+                if (item == "A") totalPrice += 50;
             }
             
             return totalPrice;
         }
 
-        public void Scan(string s)
+        public void Scan(string sku)
         {
-            _items.Add(s);
+            _items.Add(sku);
         }
     }
 }

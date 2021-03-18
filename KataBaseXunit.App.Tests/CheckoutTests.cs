@@ -28,5 +28,16 @@ namespace KataBaseXunit.App.Tests
             
             Assert.Equal(50, result);
         }
+
+        [Fact]
+        public void TwoAsCost100()
+        {
+            _sut.Scan("A");
+            _sut.Scan("A");
+            
+            var result = _sut.GetTotalPrice();
+            
+            Assert.Equal(100, result);
+        }
     }
 }
