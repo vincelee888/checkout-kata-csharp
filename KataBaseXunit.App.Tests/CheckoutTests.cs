@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using System.Collections.Generic;
+using Xunit;
 
 namespace KataBaseXunit.App.Tests
 {
@@ -8,7 +9,12 @@ namespace KataBaseXunit.App.Tests
 
         public CheckoutTests()
         {
-            _sut = new Checkout();
+            _sut = new Checkout(new Dictionary<string, int>
+            {
+                {"A", 50},
+                {"B", 30},
+                {"C", 20}
+            });
         }
 
         [Fact]
