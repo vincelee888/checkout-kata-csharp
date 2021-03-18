@@ -13,7 +13,8 @@ namespace KataBaseXunit.App.Tests
             {
                 {"A", 50},
                 {"B", 30},
-                {"C", 20}
+                {"C", 20},
+                {"D", 15}
             });
         }
 
@@ -23,6 +24,7 @@ namespace KataBaseXunit.App.Tests
         [InlineData("AA", 100)]
         [InlineData("B", 30)]
         [InlineData("C", 20)]
+        [InlineData("D", 15)]
         public void ItemsCostCorrespondsToPriceList(string skus, int expectedTotal)
         {
             foreach (var sku in skus.ToCharArray())
