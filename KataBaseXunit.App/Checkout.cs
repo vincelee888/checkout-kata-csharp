@@ -4,7 +4,8 @@
     {
         public int GetTotalPrice()
         {
-            return 0;
+            var totalPrice = 0;
+            return totalPrice;
         }
     }
 }
