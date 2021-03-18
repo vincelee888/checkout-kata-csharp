@@ -4,7 +4,7 @@
     {
         public int GetTotalPrice()
         {
-            throw new System.NotImplementedException();
+            return 0;
         }
     }
 }
