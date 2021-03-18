@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace KataBaseXunit.App
 {
@@ -15,7 +16,8 @@ namespace KataBaseXunit.App
 
         public int GetTotalPrice()
         {
-            return GetBasicPricing();
+            var discount = _items.Count(sku => sku == "A") / 3 * 20;
+            return GetBasicPricing() - discount;
         }
 
         private int GetBasicPricing()

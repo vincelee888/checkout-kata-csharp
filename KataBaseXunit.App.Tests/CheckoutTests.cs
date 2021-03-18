@@ -9,13 +9,14 @@ namespace KataBaseXunit.App.Tests
 
         public CheckoutTests()
         {
-            _sut = new Checkout(new Dictionary<string, int>
+            var priceList = new Dictionary<string, int>
             {
                 {"A", 50},
                 {"B", 30},
                 {"C", 20},
                 {"D", 15}
-            });
+            };
+            _sut = new Checkout(priceList);
         }
 
         [Theory]
@@ -25,6 +26,7 @@ namespace KataBaseXunit.App.Tests
         [InlineData("B", 30)]
         [InlineData("C", 20)]
         [InlineData("D", 15)]
+        [InlineData("AAA", 130)]
         public void ItemsCostCorrespondsToPriceList(string skus, int expectedTotal)
         {
             foreach (var sku in skus.ToCharArray())
