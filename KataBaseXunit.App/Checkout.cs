@@ -24,8 +24,8 @@ namespace KataBaseXunit.App
         {
             var aDiscountDefinition = new Discount("A", 3, 20);
             var countOfAs = _items
-                .Count(sku => sku == "A");
-            var discountA = -countOfAs / 3 * 20;
+                .Count(sku => sku == aDiscountDefinition.Sku);
+            var discountA = -countOfAs / aDiscountDefinition.TotalItemsToQualify * aDiscountDefinition.DiscountAmount;
             
             var countOfBs = _items
                 .Count(sku => sku == "B");
