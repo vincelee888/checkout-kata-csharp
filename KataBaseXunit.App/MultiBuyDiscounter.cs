@@ -23,9 +23,8 @@ namespace KataBaseXunit.App
             
             foreach (var discount in _discounts)
             {
-                var countOfAs = items
-                    .Count(sku => sku == discount.Sku);
-                totalDiscount += -countOfAs / discount.TotalItemsToQualify * discount.DiscountAmount;
+                var count = items.Count(sku => sku == discount.Sku);
+                totalDiscount += -count / discount.TotalItemsToQualify * discount.DiscountAmount;
             }
             
             return totalDiscount;
