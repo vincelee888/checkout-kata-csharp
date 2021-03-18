@@ -49,5 +49,15 @@ namespace KataBaseXunit.App.Tests
             
             Assert.Equal(30, result);
         }
+
+        [Fact]
+        public void SingleCCosts20()
+        {
+            _sut.Scan("C");
+            
+            var result = _sut.GetTotalPrice();
+            
+            Assert.Equal(20, result);
+        }
     }
 }

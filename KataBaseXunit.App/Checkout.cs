@@ -19,6 +19,7 @@ namespace KataBaseXunit.App
             {
                 if (item == "A") totalPrice += 50;
                 if (item == "B") totalPrice += 30;
+                if (item == "C") totalPrice += 20;
             }
             
             return totalPrice;
