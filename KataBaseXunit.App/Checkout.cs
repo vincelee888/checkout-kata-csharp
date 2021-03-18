@@ -15,8 +15,13 @@ namespace KataBaseXunit.App
 
         public int GetTotalPrice()
         {
+            return GetBasicPricing();
+        }
+
+        private int GetBasicPricing()
+        {
             var totalPrice = 0;
-            
+
             foreach (var item in _items)
             {
                 if (_priceList.ContainsKey(item))
@@ -24,7 +29,7 @@ namespace KataBaseXunit.App
                     totalPrice += _priceList[item];
                 }
             }
-            
+
             return totalPrice;
         }
 
