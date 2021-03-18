@@ -3,7 +3,12 @@ using System.Linq;
 
 namespace KataBaseXunit.App
 {
-    public class MultiBuyDiscounter
+    public interface IDiscounter
+    {
+        int GetDiscount(IReadOnlyCollection<string> items);
+    }
+
+    public class MultiBuyDiscounter : IDiscounter
     {
         private readonly Discount[] _discounts;
 
