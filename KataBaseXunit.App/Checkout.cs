@@ -22,16 +22,22 @@ namespace KataBaseXunit.App
 
         private int GetDiscount()
         {
-            var aDiscountDefinition = new Discount("A", 3, 20);
-            var countOfAs = _items
-                .Count(sku => sku == aDiscountDefinition.Sku);
-            var discountA = -countOfAs / aDiscountDefinition.TotalItemsToQualify * aDiscountDefinition.DiscountAmount;
+            var discounts = new[]
+            {
+                new Discount("A", 3, 20),
+                new Discount("B", 2, 15)
+            };
+
+            var totalDiscount = 0;
             
-            var countOfBs = _items
-                .Count(sku => sku == "B");
-            var discountB = -countOfBs / 2 * 15;
+            foreach (var discount in discounts)
+            {
+                var countOfAs = _items
+                    .Count(sku => sku == discount.Sku);
+                totalDiscount += -countOfAs / discount.TotalItemsToQualify * discount.DiscountAmount;
+            }
             
-            return discountA + discountB;
+            return totalDiscount;
         }
 
         private int GetBasicPricing()
