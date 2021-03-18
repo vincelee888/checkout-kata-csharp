@@ -6,11 +6,11 @@ namespace KataBaseXunit.App
     {
         private readonly List<string> _items;
         private readonly Dictionary<string, int> _priceList;
-        private readonly MultiBuyDiscounter _discounter;
+        private readonly IDiscounter _discounter;
 
         public Checkout(
             Dictionary<string, int> priceList, 
-            MultiBuyDiscounter discounter)
+            IDiscounter discounter)
         {
             _items = new List<string>();
             _priceList = priceList;
