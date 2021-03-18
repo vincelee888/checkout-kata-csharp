@@ -13,6 +13,13 @@ namespace KataBaseXunit.App
 
         public int GetTotalPrice()
         {
+            var priceList = new Dictionary<string, int>
+            {
+                {"A", 50},
+                {"B", 30},
+                {"C", 20},
+            };
+            
             var totalPrice = 0;
             
             foreach (var item in _items)
