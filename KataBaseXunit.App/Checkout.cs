@@ -18,6 +18,7 @@ namespace KataBaseXunit.App
             foreach (var item in _items)
             {
                 if (item == "A") totalPrice += 50;
+                if (item == "B") totalPrice += 30;
             }
             
             return totalPrice;
