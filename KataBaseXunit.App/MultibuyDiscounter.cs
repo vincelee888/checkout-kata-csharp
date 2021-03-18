@@ -2,9 +2,9 @@
 using System.Linq;
 using KataBaseXunit.App;
 
-static internal class MultibuyDiscounter
+public class MultibuyDiscounter
 {
-    public static int GetDiscount(IEnumerable<Discount> discounts, IReadOnlyCollection<string> items)
+    public int GetDiscount(IEnumerable<Discount> discounts, IReadOnlyCollection<string> items)
     {
         var totalDiscount = 0;
             

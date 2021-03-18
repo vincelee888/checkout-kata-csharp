@@ -20,7 +20,7 @@ namespace KataBaseXunit.App
 
         public int GetTotalPrice()
         {
-            return GetBasicPricing() + MultibuyDiscounter.GetDiscount(_discounts, _items);
+            return GetBasicPricing() + new MultibuyDiscounter().GetDiscount(_discounts, _items);
         }
 
         private int GetBasicPricing()
