@@ -20,7 +20,7 @@ namespace KataBaseXunit.App.Tests
             {
                 new Discount("A", 3, 20),
                 new Discount("B", 2, 15)
-            });
+            }, new MultibuyDiscounter());
         }
 
         [Theory]
